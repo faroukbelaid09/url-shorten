@@ -1,5 +1,7 @@
 $nav-links-color: hsl(257, 7%, 63%);
 $nav-links-hover-color: hsl(257, 27%, 26%);
+$btn-bg-color: hsl(180, 66%, 49%);
+
 @mixin astyle {
   text-decoration: none;
   color: $nav-links-color;
@@ -8,36 +10,37 @@ $nav-links-hover-color: hsl(257, 27%, 26%);
     color: $nav-links-hover-color;
   }
 }
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 8rem;
+
+  a {
+    @include astyle();
+  }
 
   .nav-bar-container {
     display: flex;
     .logo a {
-      margin: 0 2rem 0 0;
+      margin: 0 3rem 0 0;
     }
-    
+
     ul {
       list-style-type: none;
       display: flex;
     }
-
-    a {
-      @include astyle();
-    }
   }
 
   .signIn-up-container {
-    a {
-      @include astyle();
-    }
     .signup {
-      background-color: hsl(180, 66%, 49%);
-      padding: 0.5rem 1rem;
+      background-color: $btn-bg-color;
+      padding: 0.5rem 1.2rem;
       border-radius: 20px;
       color: white;
+      font-size: 16px;
+      font-weight: bold;
       &:hover {
         background-color: hsl(180, 60%, 72%);
         color: white;
