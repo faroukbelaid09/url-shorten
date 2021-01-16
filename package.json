@@ -1,0 +1,19 @@
+{
+  "name": "url-shortening-api-master",
+  "version": "1.0.0",
+  "description": "URL shorten",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/faroukbelaid09/url-shorten.git"
+  },
+  "author": "Farouk BElaid\u001b[D\u001b[D\u001b[D\u001b[e\u001b[C\u001b[C\u001b[C\u001blaid",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/faroukbelaid09/url-shorten/issues"
+  },
+  "homepage": "https://github.com/faroukbelaid09/url-shorten#readme"
+}
