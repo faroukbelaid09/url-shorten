@@ -1,6 +1,7 @@
 $nav-links-color: hsl(257, 7%, 63%);
 $nav-links-hover-color: hsl(257, 27%, 26%);
 $btn-bg-color: hsl(180, 66%, 49%);
+$btn-hover-bg-color: hsl(180, 60%, 72%);
 
 @mixin astyle {
   text-decoration: none;
@@ -15,7 +16,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 8rem;
+  padding: 0 6rem;
 
   a {
     @include astyle();
@@ -42,7 +43,7 @@ header {
       font-size: 16px;
       font-weight: bold;
       &:hover {
-        background-color: hsl(180, 60%, 72%);
+        background-color: $btn-hover-bg-color;
         color: white;
       }
     }
