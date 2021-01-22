@@ -3,6 +3,7 @@ $p-color: hsl(257, 7%, 63%);
 $btn-hover-bg-color: hsl(180, 60%, 72%);
 $feature-section-bg-color: hsl(0, 0%, 90%);
 $purpel-color: hsl(257, 27%, 26%);
+$error-color: hsl(0, 87%, 67%);
 
 @mixin astyle {
   background-color: $btn-bg-color;
@@ -80,7 +81,7 @@ $purpel-color: hsl(257, 27%, 26%);
   position: relative;
   height: 10.5rem;
   margin: 3rem 8rem 0 8rem;
-  div {
+  .short-link__container {
     position: absolute;
     left: 0;
     right: 0;
@@ -94,19 +95,36 @@ $purpel-color: hsl(257, 27%, 26%);
     justify-content: space-evenly;
     align-items: center;
 
-    input {
-      padding: 1.3rem 1rem;
-      border-radius: 8px;
-      outline: none;
-      border: none;
+    div {
       width: 60%;
+      position: relative;
+      input {
+        padding: 1.3rem 1rem;
+        border-radius: 8px;
+        outline: none;
+        border: none;
+        width: 100%;
 
-      &::placeholder {
-        font-family: "Poppins", sans-serif;
-        font-size: 1rem;
+        &::placeholder {
+          font-family: "Poppins", sans-serif;
+          font-size: 1rem;
+        }
+      }
+      input.error {
+        border: 3px solid hsl(0, 87%, 67%);
+      }
+
+      .error-msg {
+        display: none;
+        position: absolute;
+        bottom: -30px;
+        color: hsl(0, 87%, 67%);
+      }
+
+      .error-msg.active {
+        display: block;
       }
     }
-
     a {
       padding: 1rem 2rem;
       border-radius: 8px;
@@ -119,9 +137,33 @@ $purpel-color: hsl(257, 27%, 26%);
 .features {
   padding: 12rem 0 3rem 0;
   background-color: $feature-section-bg-color;
+
+  // shorten Link History
+  .shorten-link-history {
+    margin: 0 6rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+
+    div {
+      display: flex;
+      align-items: center;
+
+      a {
+        @include astyle();
+        padding: .8rem 2.5rem;
+        margin-left: 1rem;
+        border-radius: 5px;
+      }
+    }
+  }
+
   h1 {
     text-align: center;
-    margin-bottom: 1rem;
+    margin: 3rem 0 1rem 0;
   }
   span {
     display: block;
@@ -158,7 +200,7 @@ $purpel-color: hsl(257, 27%, 26%);
       background-color: hsl(180, 66%, 49%);
     }
 
-    h1 {
+    h2 {
       margin-top: 2.5rem;
       text-align: left;
     }
@@ -189,5 +231,148 @@ $purpel-color: hsl(257, 27%, 26%);
     padding: 1rem 2rem;
     border-radius: 20px;
     @include astyle();
+  }
+}
+
+@media (max-width: 1178px) {
+  // CTA Section
+  .cta-section {
+    .desc {
+      h1 {
+        font-size: 4rem;
+      }
+    }
+  }
+
+  // Feature Section
+  .features {
+    h2 {
+      font-size: 24px;
+    }
+    p {
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 1060px) {
+  // CTA Section
+  .cta-section {
+    .desc {
+      h1 {
+        font-size: 3rem;
+      }
+      p {
+        font-size: 15px;
+      }
+    }
+  }
+
+  // Feature Section
+  .features {
+    h2 {
+      font-size: 20px;
+    }
+    p {
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 928px) {
+  // CTA Section
+  .cta-section {
+    flex-direction: column;
+    padding: 0;
+    .desc {
+      order: 2;
+      width: 100%;
+      text-align: center;
+      h1 {
+        font-size: 4.5rem;
+      }
+    }
+    .illustration-img {
+      order: 1;
+      width: 100%;
+      text-align: center;
+      margin-top: 2rem;
+      img {
+        width: 80%;
+      }
+    }
+  }
+
+  // Short Link Section
+  .short-link {
+    height: 12rem;
+    margin: 3rem 4rem 0 4rem;
+    div {
+      background-position: bottom;
+      flex-direction: column;
+      padding: 3rem 0;
+      input {
+        width: 80%;
+      }
+      a {
+        margin-top: 2rem;
+        width: 80%;
+        text-align: center;
+      }
+    }
+  }
+
+  // Feature Section
+  .features {
+    .card-container {
+      flex-direction: column;
+      margin: 5rem 3rem;
+
+      .feature-card-first {
+        .img-container {
+          transform: translateX(-50%);
+          left: 50%;
+        }
+      }
+
+      .feature-card-seconde {
+        margin: 8rem 0;
+        .img-container {
+          transform: translateX(-50%);
+          left: 50%;
+        }
+      }
+
+      .feature-card-third {
+        margin-top: 0;
+        .img-container {
+          transform: translateX(-50%);
+          left: 50%;
+        }
+      }
+      &::after {
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        width: 0.8rem;
+        height: 100%;
+      }
+    }
+  }
+
+  // Get Started Section
+  .get-started-section {
+    text-align: center;
+  }
+}
+
+@media (max-width: 550px) {
+  // CTA Section
+  .cta-section {
+    .desc {
+      h1 {
+        font-size: 3rem;
+      }
+    }
   }
 }

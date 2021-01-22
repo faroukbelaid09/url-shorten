@@ -27,10 +27,11 @@
   </head>
   <body>
     <header>
+      <div class="logo">
+        <a href="#"><img src="../images/logo.svg" alt="logo" /></a>
+      </div>
+
       <div class="nav-bar-container">
-        <div class="logo">
-          <a href="#"><img src="../images/logo.svg" alt="logo" /></a>
-        </div>
         <nav>
           <ul>
             <li><a href="#">Features</a></li>
@@ -38,10 +39,17 @@
             <li><a href="#">Resources</a></li>
           </ul>
         </nav>
+
+        <div class="signIn-up-container">
+          <a href="#" class="login">Login</a>
+          <a href="#" class="signup">Sign Up</a>
+        </div>
       </div>
-      <div class="signIn-up-container">
-        <a href="#" class="login">Login</a>
-        <a href="#" class="signup">Sign Up</a>
+
+      <div class="hamburger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </header>
     <main>
@@ -64,18 +72,30 @@
       </section>
 
       <section class="short-link">
-        <div>
-          <input
-            type="url"
-            name="url"
-            id="url"
-            placeholder="Shorten a link here..."
-          />
-          <a href="#">Shorten It!</a>
+        <div class="short-link__container">
+          <div>
+            <input
+              type="url"
+              name="url"
+              id="url-input"
+              placeholder="Shorten a link here..."
+            />
+            <p class="error-msg">Please add a link</p>
+          </div>
+          <a id="shorten-link-btn">Shorten It!</a>
         </div>
       </section>
 
       <section class="features">
+        <div class="shorten-link-history">
+          <p>Lorem ipsum dolor sit amet consectetur</p>
+          <div>
+            <p>Lorem ipsum dolor sit</p>
+            <a href="#">Copy</a>
+          </div>
+        </div>
+
+        
         <h1>Advanced Statistics</h1>
         <p>
           Track how your links are performing across the web with
@@ -89,7 +109,7 @@
                 alt="brand-recognition"
               />
             </div>
-            <h1>Brand Recognition</h1>
+            <h2>Brand Recognition</h2>
             <p>
               Boost your brand recognition with each click. Generic links don’t
               mean a thing. Branded links help instil confidence in your
@@ -104,7 +124,7 @@
                 alt="brand-recognition"
               />
             </div>
-            <h1>Detailed Records</h1>
+            <h2>Detailed Records</h2>
             <p>
               Gain insights into who is clicking your links. Knowing when and
               where people engage with your content helps inform better
@@ -119,7 +139,7 @@
                 alt="brand-recognition"
               />
             </div>
-            <h1>Fully Customizable</h1>
+            <h2>Fully Customizable</h2>
             <p>
               Improve brand awareness and content discoverability through
               customizable links, supercharging audience engagement.

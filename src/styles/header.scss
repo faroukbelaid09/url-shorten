@@ -2,6 +2,7 @@ $nav-links-color: hsl(257, 7%, 63%);
 $nav-links-hover-color: hsl(257, 27%, 26%);
 $btn-bg-color: hsl(180, 66%, 49%);
 $btn-hover-bg-color: hsl(180, 60%, 72%);
+$purpel-color: hsl(257, 27%, 26%);
 
 @mixin astyle {
   text-decoration: none;
@@ -14,38 +15,115 @@ $btn-hover-bg-color: hsl(180, 60%, 72%);
 
 header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: 0 6rem;
+
+  .hamburger-menu {
+    display: none;
+  }
 
   a {
     @include astyle();
   }
 
+  .logo a {
+    margin: 0 3rem 0 0;
+  }
+
   .nav-bar-container {
+    width: 100%;
     display: flex;
-    .logo a {
-      margin: 0 3rem 0 0;
-    }
+    justify-content: space-between;
 
     ul {
       list-style-type: none;
       display: flex;
     }
-  }
-
-  .signIn-up-container {
-    .signup {
-      background-color: $btn-bg-color;
-      padding: 0.5rem 1.2rem;
-      border-radius: 20px;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      &:hover {
-        background-color: $btn-hover-bg-color;
+    .signIn-up-container {
+      .signup {
+        background-color: $btn-bg-color;
+        padding: 0.5rem 1.2rem;
+        border-radius: 20px;
         color: white;
+        font-size: 16px;
+        font-weight: bold;
+        &:hover {
+          background-color: $btn-hover-bg-color;
+          color: white;
+        }
       }
+    }
+  }
+}
+
+@media (max-width: 928px) {
+  header {
+    padding: 0 4rem;
+    flex-direction: column;
+    .hamburger-menu {
+      display: block;
+      position: absolute;
+      right: 6rem;
+      cursor: pointer;
+      div {
+        width: 50px;
+        height: 6px;
+        background-color: $nav-links-color;
+        margin: 10px 0;
+      }
+    }
+
+    .logo {
+      align-self: start;
+    }
+
+    .nav-bar-container {
+      transform: translateY(0%);
+      visibility: hidden;
+    }
+
+    .nav-bar-container.active {
+      transform: translateY(20%);
+      transition: 0.5s;
+      visibility: visible;
+      flex-direction: column;
+      background-color: $purpel-color;
+      border-radius: 10px;
+      padding: 1rem 0;
+      ul {
+        flex-direction: column;
+        text-align: center;
+
+        li {
+          margin: 1rem 0;
+          a {
+            color: white;
+          }
+        }
+      }
+      .signIn-up-container {
+        text-align: center;
+
+        a {
+          margin: 1rem auto;
+          color: white;
+        }
+        .signup {
+          display: block;
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 928px) {
+  header {
+    padding: 0 2rem;
+
+    .hamburger-menu {
+      right: 2rem;
     }
   }
 }
