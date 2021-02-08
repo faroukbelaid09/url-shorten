@@ -149,14 +149,14 @@ $error-color: hsl(0, 87%, 67%);
     background-color: white;
     border-radius: 8px;
     #original-url {
-    color: black;
+      color: black;
     }
     div {
       display: flex;
       align-items: center;
 
-      .shorten-url{
-        color: $btn-bg-color
+      .shorten-url {
+        color: $btn-bg-color;
       }
       a {
         @include astyle();
@@ -253,6 +253,35 @@ $error-color: hsl(0, 87%, 67%);
 
   // Feature Section
   .features {
+    // shorten Link History
+    .shorten-link-history {
+      margin: 1rem 2rem;
+      flex-direction: column;
+      padding: 0 1rem;
+
+      #original-url {
+        width: 100%;
+        padding: 1rem;
+        font-size: 20px;
+        border-bottom: 1px solid;
+      }
+
+      div {
+        width: 100%;
+        flex-direction: column;
+
+        .shorten-url {
+          padding: 0.5rem 0;
+          font-size: 20px;
+        }
+        a {
+          width: 100%;
+          padding: 0.5rem;
+          margin: 1rem 0;
+          text-align: center;
+        }
+      }
+    }
     h2 {
       font-size: 24px;
     }
@@ -313,18 +342,14 @@ $error-color: hsl(0, 87%, 67%);
   // Short Link Section
   .short-link {
     height: 12rem;
-    margin: 3rem 4rem 0 4rem;
-    div {
-      background-position: bottom;
+    margin: 3rem 1rem 0 1rem;
+    .short-link__container {
       flex-direction: column;
-      padding: 3rem 0;
-      input {
-        width: 80%;
+      div {
+        width: 90%;
       }
       a {
-        margin-top: 2rem;
-        width: 80%;
-        text-align: center;
+        margin-top: 1rem;
       }
     }
   }

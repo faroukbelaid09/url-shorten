@@ -67,6 +67,7 @@ header {
   z-index: 100;
   display: none;
 }
+
 .loadingCircel {
   position: fixed;
   top: 50%;
@@ -78,7 +79,7 @@ header {
   border: 6px solid transparent;
   border-top: 6px solid $btn-bg-color;
   border-radius: 50%;
-  animation: loading 1s infinite linear ;
+  animation: loading 1s infinite linear;
   display: none;
 }
 
@@ -93,6 +94,7 @@ header {
 
 @media (max-width: 928px) {
   header {
+    
     padding: 0 4rem;
     flex-direction: column;
     .hamburger-menu {
@@ -110,6 +112,7 @@ header {
 
     .logo {
       align-self: start;
+      margin-top: 1rem;
     }
 
     .nav-bar-container {
