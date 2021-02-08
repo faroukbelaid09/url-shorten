@@ -2,7 +2,7 @@
 
 ## Welcome! 👋
 
-Landing page, integrate with the [shrtcode API](https://app.shrtco.de/).
+A Landing page, integrate with the [shrtcode API](https://app.shrtco.de/).
 
 You should be able to:
 
