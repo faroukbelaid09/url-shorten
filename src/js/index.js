@@ -25,11 +25,61 @@ const shortURL = async (url) => {
   try {
     const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`);
     const data = await response.json();
-    console.log(data.result.short_link);
+    return {
+      originalUrl: data.result.original_link,
+      shortenUrl: data.result.short_link,
+    };
   } catch (e) {
     console.log(e);
   }
 };
+
+const updateUI = (originalUrl, shortenUrl, copyHandler) => {
+  const wrapper = document.createElement("div");
+  wrapper.classList.add("shorten-link-history");
+
+  wrapper.innerHTML = `<p id="original-url">${originalUrl}</p>
+  <div>
+    <p class="shorten-url">${shortenUrl}</p>
+    <a>Copy</a>
+  </div>`;
+  const featuresSection = document.querySelector(".features");
+  featuresSection.insertAdjacentElement("afterbegin", wrapper);
+  const shortenURL = wrapper.querySelector(".shorten-url");
+  const copyBTN = wrapper.querySelector("a");
+  copyBTN.addEventListener(
+    "click",
+    copyHandler.bind(this, copyBTN, shortenURL)
+  );
+};
+
+let shortenUrlList = [];
+
+let urlList = localStorage.getItem("shortenUrlList");
+
+if (urlList && urlList.length >= 0) {
+  shortenUrlList = JSON.parse(urlList);
+  console.log(shortenUrlList);
+
+  shortenUrlList.forEach((element, index) => {
+    if (index < 3) {
+      updateUI(element.org, element.shr, (currentBTN, shortenURL) => {
+        const txtarea = document.createElement("textarea");
+        txtarea.value = shortenURL.textContent;
+        console.log(shortenURL.textContent);
+        document.body.appendChild(txtarea);
+        txtarea.select();
+        txtarea.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        currentBTN.style.backgroundColor = "hsl(257, 27%, 26%)";
+        currentBTN.textContent = "Copied!";
+        txtarea.parentElement.removeChild(txtarea);
+      });
+    }
+  });
+}
+
+localStorage.setItem("shortenUrlList", JSON.stringify(shortenUrlList));
 
 humburgerMenu.addEventListener("click", () => {
   navBar.classList.toggle("active");
@@ -49,5 +99,39 @@ shortenBTN.addEventListener("click", () => {
     errorMsg.classList.remove("active");
   }
 
-  shortURL(inputURL.value.trim());
+  const backDrop = document.querySelector(".backDrop");
+  const loading = document.querySelector(".loadingCircel");
+
+  backDrop.style.display = "block";
+  loading.style.display = "block";
+
+  shortURL(inputURL.value.trim()).then(
+    (val) => {
+      if (shortenUrlList.length > 2) {
+        shortenUrlList.pop();
+      }
+      shortenUrlList.unshift({ org: val.originalUrl, shr: val.shortenUrl });
+
+      localStorage.setItem("shortenUrlList", JSON.stringify(shortenUrlList));
+
+      backDrop.style.display = "none";
+      loading.style.display = "none";
+
+      updateUI(val.originalUrl, val.shortenUrl, (currentBTN, shortenURL) => {
+        const txtarea = document.createElement("textarea");
+        txtarea.value = shortenURL.innerHTML;
+        document.body.appendChild(txtarea);
+        txtarea.select();
+        txtarea.setSelectionRange(0, 99999);
+        document.execCommand("copy");
+        currentBTN.style.backgroundColor = "hsl(257, 27%, 26%)";
+        currentBTN.textContent = "Copied!";
+        txtarea.parentElement.removeChild(txtarea);
+      });
+    },
+    (error) => {
+      alert("Please Try Again Later!!");
+      console.log(error);
+    }
+  );
 });

@@ -129,6 +129,7 @@ $error-color: hsl(0, 87%, 67%);
       padding: 1rem 2rem;
       border-radius: 8px;
       @include astyle();
+      cursor: pointer;
     }
   }
 }
@@ -140,23 +141,29 @@ $error-color: hsl(0, 87%, 67%);
 
   // shorten Link History
   .shorten-link-history {
-    margin: 0 6rem;
+    margin: 1rem 6rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1.5rem;
     background-color: white;
     border-radius: 8px;
-
+    #original-url {
+    color: black;
+    }
     div {
       display: flex;
       align-items: center;
 
+      .shorten-url{
+        color: $btn-bg-color
+      }
       a {
         @include astyle();
-        padding: .8rem 2.5rem;
+        padding: 0.8rem 2.5rem;
         margin-left: 1rem;
         border-radius: 5px;
+        cursor: pointer;
       }
     }
   }

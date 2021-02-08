@@ -57,6 +57,40 @@ header {
   }
 }
 
+.backDrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  display: none;
+}
+.loadingCircel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%), translateY(-50%);
+  width: 50px;
+  height: 50px;
+  z-index: 101;
+  border: 6px solid transparent;
+  border-top: 6px solid $btn-bg-color;
+  border-radius: 50%;
+  animation: loading 1s infinite linear ;
+  display: none;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 @media (max-width: 928px) {
   header {
     padding: 0 4rem;
